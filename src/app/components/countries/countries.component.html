@@ -1,2 +1,10 @@
-<p>countries works!</p>
-<div *ngFor="let country of countries">{{country.name}}</div>
+<div (scroll)="handleScrollEvent()" #countriesContainer class="countries-container">
+    <div *ngIf="countries.length">
+        <div *ngFor="let country of displayedCountries" class="country-item">
+            {{ country.name }}
+        </div>
+    </div>
+    <p *ngIf="!countries.length && !isLoading">THERE ARE NO COUNTRIES</p>
+    <p *ngIf="error">ERROR LOADING DATA</p>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>

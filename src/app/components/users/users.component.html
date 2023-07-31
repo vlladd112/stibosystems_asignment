@@ -1,2 +1,13 @@
-<p>users works!</p>
-<div *ngFor="let user of users">{{user.firstName}}</div>
+<div (scroll)="handleScrollEvent()" #usersContainer class="users-container">
+    <div *ngIf="users.length">
+        <div *ngFor="let user of displayedUsers" class="user-item">
+            {{ user.firstName }}
+        </div>
+    </div>
+    <p *ngIf="!users.length && !isLoading">THERE ARE NO USERS</p>
+    <p *ngIf="error">ERROR LOADING DATA</p>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
+  
+
+  

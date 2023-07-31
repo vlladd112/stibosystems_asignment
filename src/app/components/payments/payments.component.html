@@ -1,2 +1,10 @@
-<p>payments works!</p>
-<div *ngFor="let payment of payments">{{payment.status}}</div>
+<div (scroll)="handleScrollEvent()" #paymentsContainer class="payments-container">
+    <div *ngIf="payments.length">
+        <div *ngFor="let payment of displayedPayments" class="payment-item">
+            {{ payment.status }}
+        </div>
+    </div>
+    <p *ngIf="!payments.length && !isLoading">THERE ARE NO PAYMENTS</p>
+    <p *ngIf="error">ERROR LOADING DATA</p>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>
