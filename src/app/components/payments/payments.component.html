@@ -1,4 +1,6 @@
 <div (scroll)="handleScrollEvent()" #paymentsContainer class="payments-container">
+    <h1>PAYMENTS</h1>
+    <!-- <app-searchbar placeholder="search payment" action=""></app-searchbar> -->
     <div *ngIf="payments.length">
         <div *ngFor="let payment of displayedPayments" class="payment-item">
             {{ payment.status }}

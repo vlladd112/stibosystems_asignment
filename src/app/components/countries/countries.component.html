@@ -1,4 +1,6 @@
-<div (scroll)="handleScrollEvent()" #countriesContainer class="countries-container">
+<div (scroll)="onScroll()" #countriesContainer class="countries-container">
+    <h1>COUNTRIES</h1>
+    <app-searchbar placeholder="search country" [action]="searchCountries"></app-searchbar>
     <div *ngIf="countries.length">
         <div *ngFor="let country of displayedCountries" class="country-item">
             {{ country.name }}
@@ -6,5 +8,6 @@
     </div>
     <p *ngIf="!countries.length && !isLoading">THERE ARE NO COUNTRIES</p>
     <p *ngIf="error">ERROR LOADING DATA</p>
+    <p *ngIf="noMatchFound">NO MATCHES WERE FOUND</p>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
 </div>

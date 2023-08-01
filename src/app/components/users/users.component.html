@@ -1,4 +1,6 @@
-<div (scroll)="handleScrollEvent()" #usersContainer class="users-container">
+<div (scroll)="onScroll()" #usersContainer class="users-container">
+    <h1>USERS</h1>
+    <app-searchbar placeholder="search user" [action]="searchUsers"></app-searchbar>
     <div *ngIf="users.length">
         <div *ngFor="let user of displayedUsers" class="user-item">
             {{ user.firstName }}
@@ -6,8 +8,7 @@
     </div>
     <p *ngIf="!users.length && !isLoading">THERE ARE NO USERS</p>
     <p *ngIf="error">ERROR LOADING DATA</p>
+    <p *ngIf="noMatchFound">NO MATCHES WERE FOUND</p>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
 </div>
-  
-
   

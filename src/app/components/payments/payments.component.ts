@@ -4,11 +4,12 @@ import { ApiService } from 'src/app/services/api.service';
 import { Payments } from './payments.interface';
 import { LoadOnScrollService } from '../../services/load-on-scroll.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SearchbarComponent } from '../searchbar/searchbar.component';
 
 @Component({
   selector: 'app-payments',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule, SearchbarComponent],
   templateUrl: './payments.component.html',
   styleUrls: ['./payments.component.scss']
 })
