@@ -27,6 +27,10 @@ export class ContentComponent {
   @Input()
   listItem!: any;
   @Input()
-  action!: (text: string) => void;
+  searchAction!: (text: string) => void;
+  @Input()
+  checkAction!: (checked: boolean, id: string) => void;
+  @Input()
+  continue!: () => void;
 
 }

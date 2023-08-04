@@ -1,8 +1,9 @@
 <div (scroll)="onScroll()" #usersContainer class="users-container">
-    <app-searchbar placeholder="search user" [action]="searchUsers"></app-searchbar>
     <app-content
         [title]="'USERS'"
-        [action]="searchUsers">
+        [searchAction]="searchUsers"
+        [checkAction]="selectUsers"
+        [continue]="continueToDetails">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </app-content>
 </div>
@@ -22,5 +23,5 @@
 </ng-template>
 
 <ng-template #innerContent>
-    <app-list-item [items]="displayedUsers"></app-list-item>
+    <app-list-item [items]="displayedUsers" [action]="selectUsers"></app-list-item>
 </ng-template>

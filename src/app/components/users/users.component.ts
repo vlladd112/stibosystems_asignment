@@ -27,6 +27,7 @@ export class UsersComponent {
   noMatchFound: boolean = false;
   ongoingSearch: boolean = false;
   filteredUsers: any[] = [];
+  selectedUsers: any[] = [];
   displayedKeys: string[] = ['firstName', 'lastName'];
 
   @ViewChild('usersContainer', { read: ElementRef }) usersContainerRef!: ElementRef;
@@ -69,6 +70,11 @@ export class UsersComponent {
         this.loadOnScrollService.handleScrollEvent(this.filteredUsers, this.currentBatch, this.itemsPerPage, this.displayedUsers)
         :
         this.loadOnScrollService.handleScrollEvent(this.users, this.currentBatch, this.itemsPerPage, this.displayedUsers)
+        if(this.selectedUsers.length) {
+          this.displayedUsers.forEach(user => {
+            this.selectAlreadyCheckedItems(user.id);
+          })
+        }
     }
   }
 
@@ -76,10 +82,29 @@ export class UsersComponent {
     this.filteredUsers = [];
     this.ongoingSearch = true;
     this.users.forEach(user => {
-      user.firstName === inputValue || user.firstName.includes(inputValue) ? this.filteredUsers.push(user) : '';
+      user.firstName.includes(inputValue) || user.lastName.includes(inputValue) ? this.filteredUsers.push(user) : '';
+      if(this.selectedUsers.length) {
+        this.selectAlreadyCheckedItems(user.id);
+      }
       // TODO: maybe make search work even if text is Uppercase (make "bob" match "Bob")
     })
     this.displayedUsers = this.filteredUsers.slice(0, this.itemsPerPage);
     this.noMatchFound = !this.displayedUsers?.length ?? true;
+  }
+
+  selectUsers = (checked: boolean, id: string) => {
+    checked ? this.selectedUsers.push(id) : this.selectedUsers.splice(this.selectedUsers.indexOf(id), 1);
+  }
+
+  selectAlreadyCheckedItems = (id: string): void => {
+    if(this.selectedUsers.includes(id)) {
+      setTimeout(() => {
+        document.getElementById(id)?.setAttribute('checked', 'true');
+      })
+    }
+  }
+
+  continueToDetails = ():void => {
+    console.log('TODO');
   }
 }

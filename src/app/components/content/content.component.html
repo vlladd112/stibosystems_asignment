@@ -1,31 +1,8 @@
 <div>
     <h1>{{title}}</h1>
-    <app-searchbar placeholder="search user" [action]="action"></app-searchbar>
-    <!-- <app-searchbar placeholder="search user" [action]="action"></app-searchbar>
-    hhhh
-    <div *ngIf="items.length">
-        <div *ngFor="let user of displayedItems" class="user-item">
-            <ng-content>
-            </ng-content>
-        </div>
-    </div>
-    <p *ngIf="!items.length && !isLoading">THERE ARE NO USERS</p>
-    <p *ngIf="error">ERROR LOADING DATA</p>
-    <p *ngIf="noMatchFound">NO MATCHES WERE FOUND</p>
-    <mat-spinner *ngIf="isLoading"></mat-spinner> -->
-
-
-
-    <!-- <app-list 
-        [title]="title"
-        [items]="items"
-        [displayedItems]="displayedItems"
-        [isLoading]="isLoading"
-        [error]="error"
-        [noMatchFound]="noMatchFound"
-    > -->
+    <app-searchbar placeholder="search user" [action]="searchAction"></app-searchbar>
+    
         <ng-content></ng-content>
-    <!-- </app-list> -->
-    <button>CONTINUE</button>
+    <button (click)="continue()">CONTINUE</button>
     
 </div>

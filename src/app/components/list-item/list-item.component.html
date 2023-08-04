@@ -1,5 +1,5 @@
 
 <div *ngFor="let item of items">
-   <p>{{item.firstName}} {{item.lastName}}</p>
+   <p><input id="{{item.id}}" type="checkbox" (change)="checkAction($event)"> {{item.firstName}} {{item.lastName}}</p>
 </div>
 

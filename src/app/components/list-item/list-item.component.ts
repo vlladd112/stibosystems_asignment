@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
 export class ListItemComponent {
   @Input()
   items!: any;
+  @Input() action!: (checked: boolean, id: string) => void;
 
-  ngOnInit() {
-    
+  checkAction(e: any):void {
+    this.action(e.target.checked, e.target.id);
   }
 }
