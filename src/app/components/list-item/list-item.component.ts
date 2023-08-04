@@ -10,9 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ListItemComponent {
   @Input()
-  item!: any;
-  @Input()
-  displayedKeys!: string[];
+  items!: any;
 
   ngOnInit() {
     

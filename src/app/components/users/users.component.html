@@ -21,6 +21,6 @@
     </app-list>
 </ng-template>
 
-<ng-template #innerContent let-item let-displayedKeys="displayedKeys">
-    <app-list-item [item]="item" [displayedKeys]="displayedKeys"></app-list-item>
+<ng-template #innerContent>
+    <app-list-item [items]="displayedUsers"></app-list-item>
 </ng-template>

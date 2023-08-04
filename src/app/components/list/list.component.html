@@ -1,8 +1,8 @@
 <div>
     <div *ngIf="items.length">
         <div class="user-item">
-            <ng-container *ngFor="let item of displayedItems">
-                <ng-container *ngTemplateOutlet="dynamicTemplateRef; context: { $implicit: item, displayedKeys: displayedKeys }"></ng-container>
+            <ng-container>
+                <ng-container *ngTemplateOutlet="dynamicTemplateRef; context: { $implicit: items }"></ng-container>
             </ng-container>
         </div>
     </div>
