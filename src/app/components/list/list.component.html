@@ -1,0 +1,13 @@
+<div>
+    <div *ngIf="items.length">
+        <div class="user-item">
+            <ng-container *ngFor="let item of displayedItems">
+                <ng-container *ngTemplateOutlet="dynamicTemplateRef; context: { $implicit: item, displayedKeys: displayedKeys }"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+    <p *ngIf="!items.length && !isLoading">THERE ARE NO USERS</p>
+    <p *ngIf="error">ERROR LOADING DATA</p>
+    <p *ngIf="noMatchFound">NO MATCHES WERE FOUND</p>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+</div>

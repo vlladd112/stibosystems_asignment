@@ -1,19 +1,23 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, TemplateRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Users } from './users.interface';
 import { ApiService } from '../../services/api.service';
 import { LoadOnScrollService } from '../../services/load-on-scroll.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
+import { ContentComponent } from '../content/content.component';
+import { ListComponent } from '../list/list.component';
+import { ListItemComponent } from '../list-item/list-item.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, SearchbarComponent],
+  imports: [CommonModule, MatProgressSpinnerModule, SearchbarComponent, ContentComponent, ListComponent, ListItemComponent],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent {
+  @ViewChild('innerContent') dynamicTemplate!: TemplateRef<any>;
   users: Users[] = [];
   isLoading: boolean = true;
   error: boolean = false;
@@ -23,6 +27,7 @@ export class UsersComponent {
   noMatchFound: boolean = false;
   ongoingSearch: boolean = false;
   filteredUsers: any[] = [];
+  displayedKeys: string[] = ['firstName', 'lastName'];
 
   @ViewChild('usersContainer', { read: ElementRef }) usersContainerRef!: ElementRef;
   private usersContainer!: HTMLElement;

@@ -1,14 +1,26 @@
 <div (scroll)="onScroll()" #usersContainer class="users-container">
-    <h1>USERS</h1>
     <app-searchbar placeholder="search user" [action]="searchUsers"></app-searchbar>
-    <div *ngIf="users.length">
-        <div *ngFor="let user of displayedUsers" class="user-item">
-            {{ user.firstName }}
-        </div>
-    </div>
-    <p *ngIf="!users.length && !isLoading">THERE ARE NO USERS</p>
-    <p *ngIf="error">ERROR LOADING DATA</p>
-    <p *ngIf="noMatchFound">NO MATCHES WERE FOUND</p>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <app-content
+        [title]="'USERS'"
+        [action]="searchUsers">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </app-content>
 </div>
-  
+
+<ng-template #content>
+    <app-list
+        [dynamicTemplateRef]="innerContent" [items]="users"
+        [title]="'USERS'"
+        [items]="users"
+        [displayedItems]="displayedUsers"
+        [displayedKeys]="displayedKeys"
+        [isLoading]="isLoading"
+        [error]="error"
+        [noMatchFound]="noMatchFound">
+      <ng-container *ngTemplateOutlet="innerContent"></ng-container>
+    </app-list>
+</ng-template>
+
+<ng-template #innerContent let-item let-displayedKeys="displayedKeys">
+    <app-list-item [item]="item" [displayedKeys]="displayedKeys"></app-list-item>
+</ng-template>
