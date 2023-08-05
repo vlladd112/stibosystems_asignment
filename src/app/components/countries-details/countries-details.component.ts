@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '../../services/api.service';
-import { Users } from '../users/users.interface';
+import { Countries } from '../countries/countries.interface';
 import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
-  selector: 'app-details',
+  selector: 'app-countries-details',
   standalone: true,
   imports: [CommonModule, MatProgressSpinnerModule],
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  templateUrl: './countries-details.component.html',
+  styleUrls: ['./countries-details.component.scss']
 })
-export class DetailsComponent {
-  users: Users[] = [];
+export class CountriesDetailsComponent {
+  countries: Countries[] = [];
   isLoading: boolean = true;
   error: boolean = false;
   queryParams: any = '';
@@ -27,7 +27,7 @@ export class DetailsComponent {
     this.route.queryParams.subscribe(params => {
       this.queryParams = params['params'];
     });
-    this.fetchUsers(this.formatQueryParams(this.queryParams));
+    this.fetchCountries(this.formatQueryParams(this.queryParams));
   }
 
   formatQueryParams = (queryParams: string): any => {
@@ -40,10 +40,10 @@ export class DetailsComponent {
     return formattedParams.join('&');
   }
 
-  fetchUsers(queryParams: any) {
-    this.apiService.getData('/users/?' + queryParams).subscribe({
-      next: (data: Users[]) => {
-        this.users = data;
+  fetchCountries(queryParams: any) {
+    this.apiService.getData('/countries/?' + queryParams).subscribe({
+      next: (data: Countries[]) => {
+        this.countries = data;
         this.isLoading = false;
       },
       error: (error: any) => {
@@ -56,5 +56,4 @@ export class DetailsComponent {
       }
     });
   }
-
 }

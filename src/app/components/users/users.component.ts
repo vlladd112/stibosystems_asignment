@@ -7,13 +7,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { ContentComponent } from '../content/content.component';
 import { ListComponent } from '../list/list.component';
-import { ListItemComponent } from '../list-item/list-item.component';
+import { UsersListComponent } from '../users-list/users-list.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, SearchbarComponent, ContentComponent, ListComponent, ListItemComponent],
+  imports: [CommonModule, MatProgressSpinnerModule, SearchbarComponent, ContentComponent, ListComponent, UsersListComponent],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss']
 })
@@ -101,6 +101,6 @@ export class UsersComponent {
   }
 
   continueToDetails = ():void => {
-    this.router.navigate(['user/details'], { queryParams: { params: this.selectedUsers.join(',') } });
+    this.router.navigate(['users/details'], { queryParams: { params: this.selectedUsers.join(',') } });
   }
 }

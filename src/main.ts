@@ -7,5 +7,5 @@ import { importProvidersFrom } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 
   bootstrapApplication(AppComponent, {
-    providers: [provideRouter(APP_ROUTE), provideAnimations(), importProvidersFrom(HttpClientModule)]
+    providers: [provideRouter(APP_ROUTE), provideAnimations(), importProvidersFrom(HttpClientModule), provideAnimations()]
   })

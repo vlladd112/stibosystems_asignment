@@ -2,13 +2,13 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-list-item',
+  selector: 'app-users-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.scss']
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.scss']
 })
-export class ListItemComponent {
+export class UsersListComponent {
   @Input()
   items!: any;
   @Input() action!: (checked: boolean, id: string) => void;

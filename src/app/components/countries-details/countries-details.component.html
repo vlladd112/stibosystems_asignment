@@ -1,0 +1,5 @@
+<div *ngFor="let country of countries">
+    <span>{{country.name}}</span>
+</div>
+<p *ngIf="error">ERROR LOADING DATA</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
