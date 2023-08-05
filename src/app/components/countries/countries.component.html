@@ -1,13 +1,27 @@
-<div (scroll)="onScroll()" #countriesContainer class="countries-container">
-    <h1>COUNTRIES</h1>
-    <app-searchbar placeholder="search country" [action]="searchCountries"></app-searchbar>
-    <div *ngIf="countries.length">
-        <div *ngFor="let country of displayedCountries" class="country-item">
-            {{ country.name }}
-        </div>
-    </div>
-    <p *ngIf="!countries.length && !isLoading">THERE ARE NO COUNTRIES</p>
-    <p *ngIf="error">ERROR LOADING DATA</p>
-    <p *ngIf="noMatchFound">NO MATCHES WERE FOUND</p>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
+<div class="users-container">
+    <app-content
+        [title]="'COUNTRIES'"
+        [selectedItems]="selectedCountries"
+        [queryParams]="queryParams"
+        [searchAction]="searchCountries"
+        [continue]="continueToDetails">
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    </app-content>
 </div>
+
+<ng-template #content>
+    <app-list
+        [dynamicTemplateRef]="innerContent" [items]="countries"
+        [items]="countries"
+        [displayedItems]="displayedCountries"
+        [isLoading]="isLoading"
+        [error]="error"
+        [noMatchFound]="noMatchFound"
+        [onScroll]="onScroll">
+      <ng-container *ngTemplateOutlet="innerContent"></ng-container>
+    </app-list>
+</ng-template>
+
+<ng-template #innerContent>
+    <app-countries-list [items]="displayedCountries" [action]="selectCountries"></app-countries-list>
+</ng-template>

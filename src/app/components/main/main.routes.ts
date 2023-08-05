@@ -10,5 +10,6 @@ export default [
     { path: 'users', component: UsersComponent },
     { path: 'payments', component: PaymentsComponent },
     { path: 'countries', component: CountriesComponent },
-    { path: ':user/details', component: DetailsComponent }
+    { path: ':user/details', component: DetailsComponent },
+    { path: 'countries/details', component: DetailsComponent },
 ] as Route[];

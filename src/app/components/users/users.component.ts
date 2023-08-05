@@ -29,7 +29,6 @@ export class UsersComponent {
   ongoingSearch: boolean = false;
   filteredUsers: any[] = [];
   selectedUsers: any[] = [];
-  displayedKeys: string[] = ['firstName', 'lastName'];
   queryParams: string[] = [];
 
   @ViewChild('usersContainer', { read: ElementRef }) usersContainerRef!: ElementRef;
