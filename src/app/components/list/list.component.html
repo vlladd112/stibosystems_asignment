@@ -1,6 +1,6 @@
 <div>
     <div *ngIf="items.length">
-        <div class="list-container">
+        <div (scroll)="onScroll(usersContainer)" #usersContainer class="list-container">
             <ng-container>
                 <ng-container *ngTemplateOutlet="dynamicTemplateRef; context: { $implicit: items }"></ng-container>
             </ng-container>

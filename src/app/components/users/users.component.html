@@ -1,4 +1,4 @@
-<div (scroll)="onScroll()" #usersContainer class="users-container">
+<div class="users-container">
     <app-content
         [title]="'USERS'"
         [searchAction]="searchUsers"
@@ -11,13 +11,12 @@
 <ng-template #content>
     <app-list
         [dynamicTemplateRef]="innerContent" [items]="users"
-        [title]="'USERS'"
         [items]="users"
         [displayedItems]="displayedUsers"
-        [displayedKeys]="displayedKeys"
         [isLoading]="isLoading"
         [error]="error"
-        [noMatchFound]="noMatchFound">
+        [noMatchFound]="noMatchFound"
+        [onScroll]="onScroll">
       <ng-container *ngTemplateOutlet="innerContent"></ng-container>
     </app-list>
 </ng-template>

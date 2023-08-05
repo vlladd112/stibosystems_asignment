@@ -64,8 +64,8 @@ export class UsersComponent {
     });
   }
 
-  onScroll = () => {
-    if(this.loadOnScrollService.isScrolledToBottom(this.usersContainer)) {
+  onScroll = (usersContainer: any):void => {
+    if(this.loadOnScrollService.isScrolledToBottom(usersContainer)) {
       this.displayedUsers = this.ongoingSearch ?
         this.loadOnScrollService.handleScrollEvent(this.filteredUsers, this.currentBatch, this.itemsPerPage, this.displayedUsers)
         :

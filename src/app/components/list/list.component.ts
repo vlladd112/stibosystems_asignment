@@ -13,10 +13,6 @@ export class ListComponent {
   @Input()
   dynamicTemplateRef!: TemplateRef<any>;
   @Input()
-  displayedKeys!: string[];
-  @Input()
-  title!: string;
-  @Input()
   items!: any;
   @Input()
   displayedItems!: any;
@@ -30,4 +26,6 @@ export class ListComponent {
   listItem!: any;
   @Input()
   action!: (text: string) => void;
+  @Input()
+  onScroll!: (container: any) => void;
 }
