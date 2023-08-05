@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
 // import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ListComponent } from '../list/list.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-content',
   standalone: true,
-  imports: [CommonModule, SearchbarComponent, ListComponent],
+  imports: [CommonModule, SearchbarComponent, ListComponent, RouterModule],
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })
@@ -15,22 +16,11 @@ export class ContentComponent {
   @Input()
   title!: string;
   @Input()
-  items!: any;
+  selectedItems!: any[];
   @Input()
-  displayedItems!: any;
-  @Input()
-  isLoading!: boolean;
-  @Input()
-  error!: boolean;
-  @Input()
-  noMatchFound!: boolean;
-  @Input()
-  listItem!: any;
+  queryParams!: any[];
   @Input()
   searchAction!: (text: string) => void;
   @Input()
-  checkAction!: (checked: boolean, id: string) => void;
-  @Input()
   continue!: () => void;
-
 }

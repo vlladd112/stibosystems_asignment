@@ -1,0 +1,5 @@
+<div *ngFor="let user of users">
+    <span>{{user.firstName}}</span>
+</div>
+<p *ngIf="error">ERROR LOADING DATA</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>

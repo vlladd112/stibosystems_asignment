@@ -8,6 +8,7 @@ import { SearchbarComponent } from '../searchbar/searchbar.component';
 import { ContentComponent } from '../content/content.component';
 import { ListComponent } from '../list/list.component';
 import { ListItemComponent } from '../list-item/list-item.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -29,21 +30,18 @@ export class UsersComponent {
   filteredUsers: any[] = [];
   selectedUsers: any[] = [];
   displayedKeys: string[] = ['firstName', 'lastName'];
+  queryParams: string[] = [];
 
   @ViewChild('usersContainer', { read: ElementRef }) usersContainerRef!: ElementRef;
-  private usersContainer!: HTMLElement;
 
   constructor(
     private apiService: ApiService,
-    private loadOnScrollService: LoadOnScrollService
-    ) {}
+    private loadOnScrollService: LoadOnScrollService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fetchUsers();
-  }
-
-  ngAfterViewInit() {
-    this.usersContainer = this.usersContainerRef.nativeElement;
   }
 
   fetchUsers() {
@@ -82,11 +80,10 @@ export class UsersComponent {
     this.filteredUsers = [];
     this.ongoingSearch = true;
     this.users.forEach(user => {
-      user.firstName.includes(inputValue) || user.lastName.includes(inputValue) ? this.filteredUsers.push(user) : '';
+      user.firstName?.toLowerCase().includes(inputValue) || user.lastName?.toLowerCase().includes(inputValue) ? this.filteredUsers.push(user) : '';
       if(this.selectedUsers.length) {
         this.selectAlreadyCheckedItems(user.id);
       }
-      // TODO: maybe make search work even if text is Uppercase (make "bob" match "Bob")
     })
     this.displayedUsers = this.filteredUsers.slice(0, this.itemsPerPage);
     this.noMatchFound = !this.displayedUsers?.length ?? true;
@@ -105,6 +102,6 @@ export class UsersComponent {
   }
 
   continueToDetails = ():void => {
-    console.log('TODO');
+    this.router.navigate(['user/details'], { queryParams: { params: this.selectedUsers.join(',') } });
   }
 }

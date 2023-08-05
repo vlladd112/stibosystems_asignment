@@ -1,8 +1,9 @@
 <div class="users-container">
     <app-content
         [title]="'USERS'"
+        [selectedItems]="selectedUsers"
+        [queryParams]="queryParams"
         [searchAction]="searchUsers"
-        [checkAction]="selectUsers"
         [continue]="continueToDetails">
         <ng-container *ngTemplateOutlet="content"></ng-container>
     </app-content>
