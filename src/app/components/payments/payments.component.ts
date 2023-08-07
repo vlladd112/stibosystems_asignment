@@ -1,15 +1,17 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from 'src/app/services/api.service';
 import { Payments } from './payments.interface';
-import { LoadOnScrollService } from '../../services/load-on-scroll.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { SearchbarComponent } from '../searchbar/searchbar.component';
+import { ContentComponent } from '../content/content.component';
+import { ListComponent } from '../list/list.component';
+import { PaymentsListComponent } from '../payments-list/payments-list.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payments',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, SearchbarComponent],
+  imports: [CommonModule, MatProgressSpinnerModule, ContentComponent, ListComponent, PaymentsListComponent],
   templateUrl: './payments.component.html',
   styleUrls: ['./payments.component.scss']
 })
@@ -18,31 +20,33 @@ export class PaymentsComponent {
   payments: Payments[] = [];
   isLoading: boolean = true;
   error: boolean = false;
-  displayedPayments: any[] = [];
-  itemsPerPage = 50;
-  currentBatch = 0;
-
-  @ViewChild('paymentsContainer', { read: ElementRef }) paymentsContainerRef!: ElementRef;
-  private paymentsContainer!: HTMLElement;
+  displayedPayments: any = {};
+  noMatchFound: boolean = false;
+  statusCounts: any = {};
+  statuses: any = {};
+  status: string = '';
+  selectedPayments: any[] = [];
 
   constructor(
     private apiService: ApiService,
-    private loadOnScrollService: LoadOnScrollService
+    private router: Router
     ) {}
 
   ngOnInit() {
     this.fetchPayments();
   }
 
-  ngAfterViewInit() {
-    this.paymentsContainer = this.paymentsContainerRef.nativeElement;
-  }
-
   fetchPayments() {
     this.apiService.getData('/payments').subscribe({
       next: (data: Payments[]) => {
         this.payments = data;
-        this.displayedPayments = this.payments.slice(0, this.itemsPerPage);
+        this.payments.forEach(payment => {
+          if (this.displayedPayments[payment.status]) {
+            this.displayedPayments[payment.status]++;
+          } else {
+            this.displayedPayments[payment.status] = 1;
+          }
+        })
         this.isLoading = false;
       },
       error: (error: any) => {
@@ -56,9 +60,11 @@ export class PaymentsComponent {
     });
   }
 
-  handleScrollEvent() {
-    if (this.loadOnScrollService.isScrolledToBottom(this.paymentsContainer)) {
-      this.displayedPayments = this.loadOnScrollService.loadNextBatch(this.currentBatch, this.itemsPerPage, this.payments, this.displayedPayments);
-    }
+  selectPayments = (checked: boolean, id: string) => {
+    checked ? this.selectedPayments.push(id) : this.selectedPayments.splice(this.selectedPayments.indexOf(id), 1);
+  }
+
+  continueToDetails = ():void => {
+    this.router.navigate(['payments/details'], { queryParams: { params: this.selectedPayments.join(',') } });
   }
 }

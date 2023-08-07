@@ -1,0 +1,11 @@
+.nav-list {
+    display: flex;
+    list-style: none;
+    li {
+        margin: 15px;
+    }
+    li:hover {
+        cursor:default;
+        color:darkslategray;
+    }
+}

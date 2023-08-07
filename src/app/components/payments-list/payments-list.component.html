@@ -1,0 +1,4 @@
+<div *ngFor="let item of items | keyvalue" class="payment-item">
+    <input id="{{item.key}}" type="checkbox" (change)="checkAction($event)">
+    {{ formatStatus(item.key) }}: {{item.value}}
+</div>

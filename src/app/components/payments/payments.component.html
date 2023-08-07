@@ -1,12 +1,21 @@
-<div (scroll)="handleScrollEvent()" #paymentsContainer class="payments-container">
+<div>
     <h1>PAYMENTS</h1>
-    <!-- <app-searchbar placeholder="search payment" action=""></app-searchbar> -->
-    <div *ngIf="payments.length">
-        <div *ngFor="let payment of displayedPayments" class="payment-item">
-            {{ payment.status }}
-        </div>
-    </div>
-    <p *ngIf="!payments.length && !isLoading">THERE ARE NO PAYMENTS</p>
-    <p *ngIf="error">ERROR LOADING DATA</p>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <ng-container *ngTemplateOutlet="content"></ng-container>
+    <button (click)="continueToDetails()">CONTINUE</button>
 </div>
+
+<ng-template #content>
+    <app-list
+        [dynamicTemplateRef]="innerContent"
+        [items]="payments"
+        [displayedItems]="displayedPayments"
+        [isLoading]="isLoading"
+        [error]="error"
+        [noMatchFound]="noMatchFound">
+      <ng-container *ngTemplateOutlet="innerContent"></ng-container>
+    </app-list>
+</ng-template>
+
+<ng-template #innerContent>
+    <app-payments-list [items]="displayedPayments" [action]="selectPayments"></app-payments-list>
+</ng-template>

@@ -5,6 +5,7 @@ import { CountriesComponent } from "../countries/countries.component";
 import { ContentComponent } from "../content/content.component";
 import { UsersDetailsComponent } from "../users-details/users-details.component";
 import { CountriesDetailsComponent } from "../countries-details/countries-details.component";
+import { PaymentsDetailsComponent } from "../payments-details/payments-details.component";
 
 export default [
     { path: '', component: ContentComponent },
@@ -13,4 +14,5 @@ export default [
     { path: 'countries', component: CountriesComponent },
     { path: 'users/details', component: UsersDetailsComponent },
     { path: 'countries/details', component: CountriesDetailsComponent },
+    { path: 'payments/details', component: PaymentsDetailsComponent },
 ] as Route[];

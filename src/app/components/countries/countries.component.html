@@ -1,4 +1,4 @@
-<div class="users-container">
+<div>
     <app-content
         [title]="'COUNTRIES'"
         [selectedItems]="selectedCountries"
@@ -11,7 +11,7 @@
 
 <ng-template #content>
     <app-list
-        [dynamicTemplateRef]="innerContent" [items]="countries"
+        [dynamicTemplateRef]="innerContent"
         [items]="countries"
         [displayedItems]="displayedCountries"
         [isLoading]="isLoading"
