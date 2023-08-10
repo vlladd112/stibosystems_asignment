@@ -1,3 +1,13 @@
 <div *ngFor="let item of items">
-    <p><input id="{{item.id}}" type="checkbox" (change)="checkAction($event)"> {{item.name}}</p>
+    <div class="list-item">
+        <input id={{item.id}} type="checkbox" (change)="checkAction($event)">
+        <div class="details-wrapper">
+            <div class="country">
+                <img src="{{item.flag}}" class="flag"/>
+                <div class="name">{{item.name}}</div>
+                <span class="code"><div class="bullet"></div>{{item.code}}</span>
+            </div>
+            <div *ngIf="item.someWeirdServerFieldNameWithCount" class="value">+{{item.someWeirdServerFieldNameWithCount}}</div>
+        </div>
+    </div>
 </div>

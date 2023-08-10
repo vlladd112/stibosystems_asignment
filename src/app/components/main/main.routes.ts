@@ -2,13 +2,13 @@ import { Route } from "@angular/router";
 import { UsersComponent } from "../users/users.component";
 import { PaymentsComponent } from "../payments/payments.component";
 import { CountriesComponent } from "../countries/countries.component";
-import { ContentComponent } from "../content/content.component";
 import { UsersDetailsComponent } from "../users-details/users-details.component";
 import { CountriesDetailsComponent } from "../countries-details/countries-details.component";
 import { PaymentsDetailsComponent } from "../payments-details/payments-details.component";
+import { HomeComponent } from "../home/home.component";
 
 export default [
-    { path: '', component: ContentComponent },
+    { path: '', component: HomeComponent },
     { path: 'users', component: UsersComponent },
     { path: 'payments', component: PaymentsComponent },
     { path: 'countries', component: CountriesComponent },

@@ -7,11 +7,13 @@ import { ContentComponent } from '../content/content.component';
 import { ListComponent } from '../list/list.component';
 import { PaymentsListComponent } from '../payments-list/payments-list.component';
 import { Router } from '@angular/router';
+import { TitleComponent } from '../title/title.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-payments',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, ContentComponent, ListComponent, PaymentsListComponent],
+  imports: [CommonModule, MatProgressSpinnerModule, ContentComponent, ListComponent, PaymentsListComponent, TitleComponent, ButtonComponent],
   templateUrl: './payments.component.html',
   styleUrls: ['./payments.component.scss']
 })
@@ -60,8 +62,8 @@ export class PaymentsComponent {
     });
   }
 
-  selectPayments = (checked: boolean, id: string) => {
-    checked ? this.selectedPayments.push(id) : this.selectedPayments.splice(this.selectedPayments.indexOf(id), 1);
+  selectPayments = (checked: boolean, status: string) => {
+    checked ? this.selectedPayments.push(status) : this.selectedPayments.splice(this.selectedPayments.indexOf(status), 1);
   }
 
   continueToDetails = ():void => {

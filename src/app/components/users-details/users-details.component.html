@@ -1,5 +1,14 @@
+<app-title text="USERS DETAILS"></app-title>
 <div *ngFor="let user of users">
-    <span>{{user.firstName}}</span>
+    <div class="user">
+        <img src={{user.avatarUrl}} alt={{user.firstName}} class="avatar">
+        <div class="details">
+            <div><span>First name: </span>{{user.firstName}}</div>
+            <div><span>Last name: </span>{{user.lastName}}</div>
+            <div><span>Id: </span> {{user.id}}</div>
+            <div><span>Email: </span> {{user.email}}</div>
+        </div>
+    </div>
 </div>
 <p *ngIf="error">ERROR LOADING DATA</p>
 <mat-spinner *ngIf="isLoading"></mat-spinner>

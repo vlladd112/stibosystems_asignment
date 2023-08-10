@@ -4,11 +4,12 @@ import { ApiService } from '../../services/api.service';
 import { Countries } from '../countries/countries.interface';
 import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TitleComponent } from '../title/title.component';
 
 @Component({
   selector: 'app-countries-details',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule, TitleComponent],
   templateUrl: './countries-details.component.html',
   styleUrls: ['./countries-details.component.scss']
 })

@@ -4,11 +4,12 @@ import { Payments } from '../payments/payments.interface';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TitleComponent } from '../title/title.component';
 
 @Component({
   selector: 'app-payments-details',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule, TitleComponent],
   templateUrl: './payments-details.component.html',
   styleUrls: ['./payments-details.component.scss']
 })

@@ -1,5 +1,12 @@
+<app-title text="PAYMENTS DETAILS"></app-title>
 <div *ngFor="let payment of payments">
-    <span>{{payment.status}}</span>
+    <div class="payment">
+        <div><span>Receiver: </span>{{payment.receiver}}</div>
+        <div><span>Status: </span>{{payment.status}}</div>
+        <div><span>ID: </span> {{payment.id}}</div>
+        <div><span>Internal ID: </span> {{payment.internalFieldA}}</div>
+        <div><span>External ID: </span> {{payment.xYZRandomField}}</div>
+    </div>
 </div>
 <p *ngIf="error">ERROR LOADING DATA</p>
 <mat-spinner *ngIf="isLoading"></mat-spinner>

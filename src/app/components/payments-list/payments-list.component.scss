@@ -1,0 +1,17 @@
+.list-item {
+    display: flex;
+}
+
+.payment-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 10px 15px;
+    width: 150px;
+    .type {
+        font-size: 16px;
+    }
+    .amount {
+        color: steelblue;
+        font-weight: 600;
+    }
+}

@@ -1,7 +1,7 @@
 <div>
-    <h1>PAYMENTS</h1>
+    <app-title text="PAYMENTS"></app-title>
         <ng-container *ngTemplateOutlet="content"></ng-container>
-    <button (click)="continueToDetails()">CONTINUE</button>
+    <app-button [action]="continueToDetails" [disabled]="selectedPayments.length === 0 ? true : null" text="CONTINUE"></app-button>
 </div>
 
 <ng-template #content>

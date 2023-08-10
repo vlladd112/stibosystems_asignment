@@ -1,5 +1,14 @@
+<app-title text="COUNTRIES DETAILS"></app-title>
 <div *ngFor="let country of countries">
-    <span>{{country.name}}</span>
+    <div class="country">
+        <img src={{country.flag}} alt={{country.name}} class="flag">
+        <div class="details">
+            <div><span>Country: </span>{{country.name}}</div>
+            <div><span>Code: </span>{{country.code}}</div>
+            <div><span>Id: </span> {{country.id}}</div>
+            <div *ngIf="country.someWeirdServerFieldNameWithCount"><span>Count: </span> {{country.someWeirdServerFieldNameWithCount}}</div>
+        </div>
+    </div>
 </div>
 <p *ngIf="error">ERROR LOADING DATA</p>
 <mat-spinner *ngIf="isLoading"></mat-spinner>

@@ -10,8 +10,6 @@ import { CommonModule } from '@angular/common';
 })
 export class SearchbarComponent {
   @Input()
-  placeholder!: string;
-  @Input()
   action!: (text: string) => void;
 
   inputValue:string = '';

@@ -1,0 +1,21 @@
+.country {
+    display: flex;
+    font-size: 16px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.flag {
+    height: 100px;
+    width: 120px;
+    border-radius: 20%;
+}
+
+.details {
+    line-height: 28px;
+    margin-left: 20px;
+    span {
+        font-weight: 600;
+        margin-right: 3px
+    }
+}

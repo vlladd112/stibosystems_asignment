@@ -1,14 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchbarComponent } from '../searchbar/searchbar.component';
-// import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ListComponent } from '../list/list.component';
 import { RouterModule } from '@angular/router';
+import { TitleComponent } from '../title/title.component';
+import { ButtonComponent } from '../button/button.component';
 
 @Component({
   selector: 'app-content',
   standalone: true,
-  imports: [CommonModule, SearchbarComponent, ListComponent, RouterModule],
+  imports: [CommonModule, SearchbarComponent, ListComponent, RouterModule, TitleComponent, ButtonComponent],
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss']
 })

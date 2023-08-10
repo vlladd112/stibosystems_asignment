@@ -4,11 +4,12 @@ import { ApiService } from '../../services/api.service';
 import { Users } from '../users/users.interface';
 import { ActivatedRoute } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TitleComponent } from '../title/title.component';
 
 @Component({
   selector: 'app-users-details',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule],
+  imports: [CommonModule, MatProgressSpinnerModule, TitleComponent],
   templateUrl: './users-details.component.html',
   styleUrls: ['./users-details.component.scss']
 })
